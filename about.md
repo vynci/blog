@@ -1,30 +1,15 @@
 ---
 layout: page
-title: About
+title: About Me
 ---
 
-<p class="message">
-  Hey there! This page is included as an example. Feel free to customize it for your own use upon downloading. Carry on!
-</p>
+I am a passionate geek whoose into experimental technologies whether it is on the software, hardware or firmware development scene.
 
-In the novel, *The Strange Case of Dr. Jeykll and Mr. Hyde*, Mr. Poole is Dr. Jekyll's virtuous and loyal butler. Similarly, Poole is an upstanding and effective butler that helps you build Jekyll themes. It's made by [@mdo](https://twitter.com/mdo).
+I currently work as a Full Stack Javascript Developer in Global Zeal Inc. in Cebu City, wherein we use frontend frameworks
+such as AngularJS and BackboneJS. I also design backend Service Oriented Architectures mostly using node.js, while utilizing amqp(rabbitmq as  broker) and mqtt(mosquitto as broker) protocols.
 
-There are currently two themes built on Poole:
+In the light of me being a licensed Electronics Engineer. I also build side projects on Home Automation, Robotics, and other Control Systems using Microcontrollers and Algorithms using PID Controllers.
 
-* [Hyde](http://hyde.getpoole.com)
-* [Lanyon](http://lanyon.getpoole.com)
+I usually combine my work experience as a software developer and my Electroncis Engineering degree to build hardware, software and cloud computing integration projects. When I first heard about Internet of Things(IoT), I fell in love with it instanly because I've been doing it already before without realizing that it is already a "thing" these days.
 
-Learn more and contribute on [GitHub](https://github.com/poole).
-
-## Setup
-
-Some fun facts about the setup of this project include:
-
-* Built for [Jekyll](http://jekyllrb.com)
-* Developed on GitHub and hosted for free on [GitHub Pages](https://pages.github.com)
-* Coded with [Sublime Text 2](http://sublimetext.com), an amazing code editor
-* Designed and developed while listening to music like [Blood Bros Trilogy](https://soundcloud.com/maddecent/sets/blood-bros-series)
-
-Have questions or suggestions? Feel free to [open an issue on GitHub](https://github.com/poole/issues/new) or [ask me on Twitter](https://twitter.com/mdo).
-
-Thanks for reading!
+I also do self studies on Machine Learning Algorithms specifically in Backpropagation Artificial Neural Network classification and regression algorithms as well as in Fuzzy Logic formulation.
