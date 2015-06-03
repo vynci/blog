@@ -7,8 +7,8 @@ permalink:        pretty
 relative_permalinks: true
 
 # Setup
-title:            vynci
-tagline:          'A Jekyll theme'
+title:            Vince Elizaga
+tagline:          'Blog - Projects'
 description:      'A software developer by day, a grease monkey by night.'
 url:              http://vinceelizaga.com
 baseurl:          /
