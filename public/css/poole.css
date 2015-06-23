@@ -65,6 +65,9 @@ body {
       -ms-text-size-adjust: 100%;
 }
 
+iframe {
+  max-width: 100%;
+}
 /* No `:visited` state is required by default (browsers will use `a`) */
 a {
   color: #268bd2;
@@ -100,7 +103,7 @@ h3 {
 }
 h4, h5, h6 {
   margin-top: 1rem;
-  font-size: 1rem;
+  font-size: 0.75rem;
 }
 
 /* Body text */
@@ -428,3 +431,116 @@ a.pagination-item:hover {
     border-bottom-right-radius: 4px;
   }
 }
+
+.project-item {
+    right: 0;
+    margin: 0 0 15px;
+    display: block;
+    position: relative;
+    max-width: 30%;
+}
+.project-caption {
+    margin: 0 auto;
+    margin-bottom: 30px;
+    padding: 10px;
+    background-color: #ECECEC;
+    height: 100px;
+}
+.project-thumbnail {
+    border-radius: 0px;
+    margin-bottom: 0px;
+    max-height: 250px;
+}
+/*.project-item {
+    right: 0;
+    margin: 0 0 15px;
+}
+
+.project-item {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    max-width: 400px;
+}
+*/
+
+.col {
+    border:0px solid rgba(0,0,0,0);
+    float:left;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+    -moz-background-clip:padding-box !important;
+    -webkit-background-clip:padding-box !important;
+    background-clip:padding-box !important;
+}
+
+
+
+    /* 1. 2 Column Grid 0px - 959px
+    -----------------------------------------------------------------------------
+
+    Span 1:    48.5%
+    Span 2:    100%
+
+    ----------------------------------------------------------------------------- */
+
+    @media screen and (min-width: 0px) and (max-width: 959px) {
+
+        .col {
+            margin-left:3%;
+        	padding:0 1.5%;
+        }
+
+        .row .col:first-child {
+            margin-left:0;
+        }
+
+
+        /*
+        Add your semantic classnames in alongside their corresponding spans here. e.g.
+
+        .span_3,
+        .my_semantic_class_name {
+            ...
+        }
+        */
+
+        .span_1 {
+            width:48.5%;
+        }
+        .span_2 {
+            margin-left:0;
+            width:100%;
+        }
+    }
+
+    /* 2. 2 Column Grid 960px - Infinity
+    -----------------------------------------------------------------------------
+
+    Span 1:    48.5%
+    Span 2:    100%
+
+    ----------------------------------------------------------------------------- */
+
+    @media screen and (min-width: 960px) {
+
+        .col {
+            margin-left:3%;
+        	padding:0 1.5%;
+        }
+
+        .row .col:first-child {
+            margin-left:0;
+        }
+
+
+
+        .span_1 {
+            width:48.5%;
+        }
+        .span_2 {
+            margin-left:0;
+            width:100%;
+        }
+    }

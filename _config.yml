@@ -9,7 +9,7 @@ relative_permalinks: true
 # Setup
 title:            Vince Elizaga
 tagline:          'Blog - Projects'
-description:      'A software developer by day, a grease monkey by night.'
+description:      'Embedded Systems. Javascript. Microservices. Internet of Things. Experimental Tech Stuff'
 url:              http://vinceelizaga.com
 baseurl:          /
 
@@ -18,6 +18,10 @@ author:
   url:            http://vinceelizaga.com
 
 paginate:         5
+
+collections:
+  projects:
+    output: true
 
 # Custom vars
 version:          2.1.0
