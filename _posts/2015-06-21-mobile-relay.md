@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Mobile Controlled Relay - ESP8266 + MQTT + Ionic
+title: Mobile App Controlled Relays through ESP8266 via MQTT+HTTP
 video-top: 7B2xMqvkf_I
 ---
 The system is based on a very cheap $3 wifi module - ESP8266 which connects to the Node.js REST API server via Mosquitto's free online MQTT Broker (test.mosquitto.org). The Android Mobile App is built using Ionic Framework utilizing AngularJs.
@@ -50,7 +50,13 @@ npm -v
 3.) In setting up the Arduino IDE for ESP8266, you can go to my previous article [http://vinceelizaga.com/2015/05/28/flashing-esp8266-using-arduino-ide/](http://vinceelizaga.com/2015/05/28/flashing-esp8266-using-arduino-ide/).
 
 ## Diving into the code
-There are three code modules which are the MQTT Client + Rest API Server, Arduino, and the Ionic Framework.
+There are three code modules which are the MQTT Client + REST API Server, ESP8266 Arduino, and the Ionic Mobile App Framework.
+
+You can get the codes in these github repos.
+
+- MQTT Client + REST API Server - [https://github.com/vynci/MQTT-REST-API](https://github.com/vynci/MQTT-REST-API)
+- ESP8266 Arduino - [https://github.com/vynci/esp8266-relay](https://github.com/vynci/esp8266-relay)
+- Ionic Mobile App - [https://github.com/vynci/esp8266-ionic](https://github.com/vynci/esp8266-ionic)
 
 ### MQTT Client + Rest API Server
 This is the server that has been deployed to heroku(http://esp8266-relays.herokuapp.com). You can create your own server locally or by deploying it in the cloud. This node application requirest two modules which are the hapi.js and mqtt.js. Hapi.js is a REST API framework, while MQTT.js is an mqtt client.
@@ -88,6 +94,7 @@ server.start();
 ```
 
 ### ESP8266 Arduino Code
+This code block right here connects to the wifi, and to the MQTT broker.
 
 ```c++
 #include <PubSubClient.h>
@@ -114,12 +121,12 @@ angular.module('starter.services', [])
 
 .factory('Devices', function($http) {
 
-  var ipServer = 'http://esp8266-relays.herokuapp.com/';
+  var ipServer = 'http://esp8266-relays.herokuapp.com';
 
   return {
     deviceCommand: function(data) {
       console.log(data);
-      return $http.post('http://' + ipServer + '/device/control', data);
+      return $http.post(ipServer + '/device/control', data);
     }
   };
 });
