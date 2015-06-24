@@ -27,7 +27,7 @@ title: Home
 <div class="posts">
   {% for project in site.projects reversed limit:3 %}
 
-  <div class="col project-item hvr-float">
+  <div class="col project-item">
       <a href="{{project.url}}" class="portfolio-link">
           <img src="{{ project.thumbnail }}" class="img-responsive project-thumbnail" alt="">
         <div class="project-caption">
