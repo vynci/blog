@@ -10,7 +10,7 @@ The REST API Server is hosted on a cloud server(heroku) which enables the relays
 
 The diagram below illustrates the connection flow of the system. The ESP8266 Wifi Module should be connected to the internet through wifi for this to work.
 
-![Test](https://lh3.googleusercontent.com/5qLDksi8lvpFFtA0XhiToL0T-ywVQpjcK9AI6W-7fxU=w684-h392-no "esp8266 - diagram")
+![Test](https://lh3.googleusercontent.com/QSkhpnJUqLclADyjilYrRnhWpIlAr2zy2QMiPTEQ2gc=w684-h392-no "esp8266 - diagram")
 
 ## Requirements
 
