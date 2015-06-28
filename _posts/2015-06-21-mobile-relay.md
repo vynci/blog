@@ -12,6 +12,8 @@ The diagram below illustrates the connection flow of the system. The ESP8266 Wif
 
 ![Test](https://lh3.googleusercontent.com/QSkhpnJUqLclADyjilYrRnhWpIlAr2zy2QMiPTEQ2gc=w684-h392-no "esp8266 - diagram")
 
+This article shows you how to make your own REST API server for the ESP8266 and your Mobile App to communicate to, via MQTT. You can use the existing REST API server that is deployed in heroku(http://esp8266-relays.herokuapp.com) or you can deploy your own. If you don't want to use "test.mosquitto.org" as your MQTT Broker, you can have your own by downloading and installing the Mosquitto **[here](http://mosquitto.org/download/)**.
+
 # Requirements
 
 ### Hardware
@@ -21,6 +23,7 @@ The diagram below illustrates the connection flow of the system. The ESP8266 Wif
 - 5V Relays
 - 2N2222A Transistor
 - Resistors
+- Capacitors
 - 1N4108 Diodes
 - LEDs
 
@@ -31,7 +34,9 @@ The diagram below illustrates the connection flow of the system. The ESP8266 Wif
 
 # Assembling the Circuit
 
-![Test](https://lh3.googleusercontent.com/9D8iGzvVCNlwAAgmo1qCA_KNw6jdZB9iLx7QF2MHOLc=w975-h912-no "esp8266 - circuit")
+The ESP8266 chip module is not 5V tolerant, so you have to add in a 3.3V regulator. I used KIA78R25API in this project. It is a 1A 4 TERMINAL LOW DROP VOLTAGE REGULATOR, with built in ON/OFF Control Terminal. The transistors are used to drive the 3.3V signal from the ESP8266 to 5V for it to be able to control the relays.
+
+![Test](https://lh3.googleusercontent.com/avDrKafyEICW3623WSk_sByyPOrktPGyNXAB1w4FqBE=w987-h927-no "esp8266 - circuit")
 
 # Preparing the Software
 
@@ -57,23 +62,33 @@ You can get the codes in these github repos.
 - Ionic Mobile App - [https://github.com/vynci/esp8266-ionic](https://github.com/vynci/esp8266-ionic)
 
 ### MQTT Client + Rest API Server
-This is the server that has been deployed to heroku(http://esp8266-relays.herokuapp.com). You can create your own server locally or by deploying it in the cloud. This node application requires two modules which are the hapi.js and mqtt.js. Hapi.js is a REST API framework, while MQTT.js is an mqtt client.
+This first module is the server that has been deployed to heroku(http://esp8266-relays.herokuapp.com). You can create your own server locally or by deploying it in the cloud. This node application requires two modules, Hapi.js is a REST API framework while MQTT.js is an mqtt client.
+
+This block initializes the REST API server, as well as establishes a connection with the MQTT broker.
 
 ```javascript
 var Hapi = require('hapi');
 var mqtt = require('mqtt');
 
 var server = new Hapi.Server();
-server.connection({ port: 4444, routes: { cors: true } });
+var port = Number(process.env.PORT || 4444);
 
-var client  = mqtt.connect('mqtt://test.mosquitto.org:1883');
+server.connection({ port: port, routes: { cors: true } });
+```
 
+This function is for publishing messages to the broker.
+
+```javascript
 var mqttPublish = function(topic, msg){
   client.publish(topic, msg, function() {
     console.log('msg sent: ' + msg);
   });
 }
+```
 
+This block creates a route for the '/device/control' POST Method, wherein if this route is being called it will execute the mqttPublish function. The 'deviceInfo' variable contains the message for the ESP8266 to translate, wherein 'dev1-on' turns the relay 1 on, 'dev1-off' off and same thing for 'dev2-on' and 'dev2-off'.
+
+```javascript
 server.route([
   {
     method: 'POST',
@@ -91,11 +106,13 @@ server.route([
 server.start();
 ```
 
+The first parameter in the mqttPublish function 'device/control' is the topic wherein our ESP8266 listens to, then the second parameter is where the message 'deviceInfo' is being passed to. The 'qos' means quality of service. It is a level of agreement between sender and receiver of a message regarding the guarantees of delivering a message. To know more about it, you can read it **[here](http://www.hivemq.com/mqtt-essentials-part-6-mqtt-quality-of-service-levels/)**.
+
 After you've downloaded the node app from this **[github](https://github.com/vynci/MQTT-REST-API)** repo, you can run it by:
 
 ```bash
 npm install
-node server.js
+node index.js
 ```
 
 This creates a REST API server wherein the mobile application can connect to. This also establishes a connection with the MQTT Broker(test.mosquitto.org).
@@ -112,7 +129,6 @@ const char* ssid = "your-wifi-ssid";
 const char* password = "your-wifi-passwd";
 
 char* topic = "device/control";
-char* topicPublish = "device/sensor";
 char* server = "85.119.83.194"; // IP of test.mosquitto.org
 
 WiFiClient wifiClient;
@@ -162,6 +178,6 @@ I'm not going to explain the process in installing the necessary libraries to bu
 
 This article explains a basic construction of an Internet of Things(IoT) Device which connects to an MQTT broker and listens to a channel for incoming data through the Node.js REST API server. The mobile application then connects to the server, which enables it to send commands to the ESP8266 then into the Relays.
 
-This implementation is for education purpose only, and does not contain any Authorization and Authentication layers hence it is not secured. There are a lot of things that could still be improved. For instance, channeling the MQTT through Websockets instead of HTTP. Instead of using relays, you can use TRIACS which is more safer and efficient on the long run. And by adding an admin dashboard for the ESP8266 side, wherein you can add a form for a dynamic saving of WIFI SSID and Password so that you wouldn't need to re-program the chip just to change the WIFI information.
+This implementation is for education purpose only, and does not contain any Authorization and Authentication layers hence it is not secured. There are a lot of things that could still be improved. For instance, channeling the MQTT through Websockets instead of HTTP. Instead of using relays, you can use TRIACS which is more safer and efficient on the long run. And by adding an admin dashboard for the ESP8266 side, wherein you can add a form for a dynamic saving of WIFI SSID and Password so that you wouldn't need to re-program the chip just to change the WIFI credentials.
 
-The ESP8266 is very cheap yet a very powerful wifi module. You can do a lot with it, this article just shows a "Hello World" equivalent application. I hope you've learned a lot with this article, and build an awesome IoT device!
+The ESP8266 is very cheap yet a very powerful wifi module. You can do a lot with it, this article just shows a "Hello World" equivalent application. I hope you've learned a lot with this article, and build your own awesome IoT device!
