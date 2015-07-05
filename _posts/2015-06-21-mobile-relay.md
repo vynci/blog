@@ -57,11 +57,11 @@ There are three code modules which are the MQTT Client + REST API Server, ESP826
 
 You can get the codes in these github repos.
 
-- MQTT Client + REST API Server - [https://github.com/vynci/MQTT-REST-API](https://github.com/vynci/MQTT-REST-API)
+- REST API Server + MQTT Client - [https://github.com/vynci/MQTT-REST-API](https://github.com/vynci/MQTT-REST-API)
 - ESP8266 Arduino - [https://github.com/vynci/esp8266-relay](https://github.com/vynci/esp8266-relay)
 - Ionic Mobile App - [https://github.com/vynci/esp8266-ionic](https://github.com/vynci/esp8266-ionic)
 
-### MQTT Client + Rest API Server
+### REST API Server + MQTT Client
 This first module is the server that has been deployed to heroku(http://esp8266-relays.herokuapp.com). You can create your own server locally or by deploying it in the cloud. This node application requires two modules, Hapi.js is a REST API framework while MQTT.js is an mqtt client.
 
 This block initializes the REST API server, as well as establishes a connection with the MQTT broker.
@@ -74,6 +74,8 @@ var server = new Hapi.Server();
 var port = Number(process.env.PORT || 4444);
 
 server.connection({ port: port, routes: { cors: true } });
+
+var client  = mqtt.connect('mqtt://test.mosquitto.org:1883');
 ```
 
 This function is for publishing messages to the broker.
@@ -180,4 +182,4 @@ This article explains a basic construction of an Internet of Things(IoT) Device 
 
 This implementation is for education purpose only, and does not contain any Authorization and Authentication layers hence it is not secured. There are a lot of things that could still be improved. For instance, channeling the MQTT through Websockets instead of HTTP. Instead of using relays, you can use TRIACS which is more safer and efficient on the long run. And by adding an admin dashboard for the ESP8266 side, wherein you can add a form for a dynamic saving of WIFI SSID and Password so that you wouldn't need to re-program the chip just to change the WIFI credentials.
 
-The ESP8266 is very cheap yet a very powerful wifi module. You can do a lot with it, this article just shows a "Hello World" equivalent application. I hope you've learned a lot with this article, and build your own awesome IoT device!
+The ESP8266 is very cheap yet a very powerful wifi module. You can do a lot with it, this article just shows a "Hello World" equivalent application. I hope you've learned a lot with this article, and build your ownbu awesome IoT device!
