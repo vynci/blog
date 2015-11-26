@@ -8,7 +8,7 @@ permalink:        /:title
 # Setup
 title:            Vince Elizaga
 tagline:          'Blog - Projects'
-description:      'Embedded Systems. Javascript. Microservices. Internet of Things. Experimental Tech Stuff'
+description:      'Embedded Systems. Javascript. Microservices. Internet of Things. Experimental Tech Stuff!'
 url:              http://vinceelizaga.com
 baseurl:          /
 
