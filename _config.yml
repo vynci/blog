@@ -3,7 +3,7 @@
 # highlighter:      pygments
 
 # Permalinks
-permalink:        pretty
+permalink:        /:title
 
 # Setup
 title:            Vince Elizaga
