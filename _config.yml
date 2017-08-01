@@ -10,7 +10,7 @@ title:            Vince Elizaga
 tagline:          'Blog - Projects'
 description:      'Embedded Systems. Javascript. Microservices. Internet of Things. Experimental Tech Stuff.'
 url:              http://velizaga.com
-baseurl:          http://velizaga.com
+baseurl:          http://velizaga.com/
 
 author:
   name:           'Vince Elizaga'
