@@ -50,7 +50,7 @@ npm -v
 
 2.) Install Ionic Framework from here [http://ionicframework.com/getting-started/](http://ionicframework.com/getting-started/). Ionic Framework is dependent with node.js, so you must install it first.
 
-3.) In setting up the Arduino IDE for ESP8266, you can go to my previous article [http://vinceelizaga.com/2015/05/28/flashing-esp8266-using-arduino-ide/](http://vinceelizaga.com/2015/05/28/flashing-esp8266-using-arduino-ide/).
+3.) In setting up the Arduino IDE for ESP8266, you can go to my previous article [http://velizaga.com/2015/05/28/flashing-esp8266-using-arduino-ide/](http://velizaga.com/2015/05/28/flashing-esp8266-using-arduino-ide/).
 
 # Diving into the code
 There are three code modules which are the MQTT Client + REST API Server, ESP8266 Arduino, and the Ionic Mobile App Framework.
@@ -139,7 +139,7 @@ PubSubClient client(server, 1883, callback, wifiClient);
 
 ```
 
-To flash this code to the ESP8266 using the Arduino IDE, you can follow the steps **[here](http://vinceelizaga.com/2015/05/28/flashing-esp8266-using-arduino-ide/)** in my previous article.
+To flash this code to the ESP8266 using the Arduino IDE, you can follow the steps **[here](http://velizaga.com/2015/05/28/flashing-esp8266-using-arduino-ide/)** in my previous article.
 
 ### Ionic - Mobile App
 This file(services.js) right here connects to the REST API server, doing a POST method

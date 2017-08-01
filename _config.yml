@@ -9,12 +9,12 @@ permalink:        /:title
 title:            Vince Elizaga
 tagline:          'Blog - Projects'
 description:      'Embedded Systems. Javascript. Microservices. Internet of Things. Experimental Tech Stuff.'
-url:              http://vinceelizaga.com
+url:              http://velizaga.com
 baseurl:          /
 
 author:
   name:           'Vince Elizaga'
-  url:            http://vinceelizaga.com
+  url:            http://velizaga.com
 
 paginate:         5
 
