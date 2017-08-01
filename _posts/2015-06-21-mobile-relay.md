@@ -176,7 +176,7 @@ ionic run android
 
 I'm not going to explain the process in installing the necessary libraries to build android/ios apps. You can follow the instructions **[here](http://ionicframework.com/getting-started/)** in the documentaion guide by Ionic Framework's website.
 
-#Conclusion
+# Conclusion
 
 This article explains a basic construction of an Internet of Things(IoT) Device which connects to an MQTT broker and listens to a channel for incoming data through the Node.js REST API server. The mobile application then connects to the server, which enables it to send commands to the ESP8266 then into the Relays.
 
